@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta lang="ru">
+    <meta charset="UTF-8">
+    <style>
+        *, *::before, *::after{
+            box-sizing: border-box;
+        }
+        body{
+            display: grid;
+            min-height: 100vh;
+            place-items: center;
+            background: navajowhite;
+            line-height: 1.6;
+            font-family: Century;
+        }
+        .card {
+            --boder-radius: .5rem;
+            background-image: url("pexels-lisa-8704052.jpg");
+            color: beige;
+            background-size: cover;
+            padding: 10rem 0 0;
+            max-width: 35ch;
+            border-radius: var(--boder-radius);
+            overflow: hidden;
+            transition: .5s ease;
+        }
+        .card:hover{
+            transform: scale(1.05);
+        }
+        .card-content{
+            --padding: 1.5rem;
+            padding: var(--padding);
+            background: linear-gradient(
+                    hsla(0, 0%, 0%, 0),
+                    hsla(20, 0%, 0%, 0.5) 20%,
+                    hsla(0, 0%, 0%, 1)
+        );
+        }
+        .card-title{
+            position: relative;
+            width: max-content;
+
+        }
+        .card-title::after{
+            content:"";
+            position: absolute;
+            height: 4px;
+            left: calc(var(--padding) * -1);
+            bottom: 0;
+            background: brown;
+            width: calc(100% + var(--padding));
+            transform-origin: left;
+            transition: transform 0.5s ease;
+        }
+        .card:hover .card-title::after{
+            transform: scaleX(1);
+        }
+        .card-body{
+
+        }
+        @media (hover) {
+            .card-content{
+                transform: translateY(65%);
+                transition: 0.5s ease;
+            }
+            .card-content > *:not(.card-title){
+            opacity: 0;
+            transition: 0.5s linear;
+            }
+            .card:hover .card-content{
+                transform: translateY(0);
+            }
+            .card:hover .card-content > *{
+                opacity: 1;
+            }
+            .card-title::after{
+                transform: scaleX(0);
+            }
+        }
+        .button{
+            cursor: pointer;
+            display: inline-block;
+            text-decoration: none;
+            color: #323232;
+            background-color: chocolate;
+            padding: 0.5em 1.25em;
+            border-radius: var(--boder-radius);
+            transition: .5s ease;
+        }
+        .button:hover, .button:focus{
+            background-color: beige;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+  <div class="card">
+      <div class="card-content">
+          <h2 class="card-title">Чашечка кофе</h2>
+          <p class="card-body">Всего лишь одна чашечка кофе сделает ваше утро позитивнее, в день продуктивнее</p>
+          <a href="#" class="button">Читать далее</a>
+      </div>
+  </div>
+</html>
